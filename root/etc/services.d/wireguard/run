@@ -20,8 +20,8 @@ if [[ -z ${PUBLIC_KEY} || -z ${END_POINT} ]]; then
   server=$(jq -r '.[0] | del(.services, .technologies)' <<< "${recommendations}")
   echo "[$(date -Iseconds)] Server: ${server}"
   if [[ -z ${server} ]]; then
-    echo "[$(date -Iseconds)] Unable to select a server ¯\_(⊙︿⊙)_/¯"
-    sleep infinity
+    echo "[$(date -Iseconds)] Unable to select a server ¯\_(⊙︿⊙)_/¯ ... exiting"
+    exit 1
   fi
 #   echo "[$(date -Iseconds)] Using server: ${server}"
   if [[ -z ${PUBLIC_KEY} ]]; then
